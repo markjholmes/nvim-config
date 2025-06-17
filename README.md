@@ -1,7 +1,6 @@
 # 💤 LazyVim
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+Using the [LazyVim](https://github.com/LazyVim/LazyVim) starter template. See the [documentation](https://lazyvim.github.io/installation).
 
 # Steps to set up
 
@@ -18,9 +17,6 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 
 9. Open neovim to the left
 10. Send lines to REPL
-
-- Visual mode to select
-- Blocks denoted by `# %%`
 
 # Plugins
 
@@ -40,3 +36,11 @@ Plus the defaults from LazyVim (???)
 - From there, `a` adds all `<Enter>` adds individual files
 - Go down to staged files and press `c` to commit
 - Write message and then `<Ctrl-D` to **do** the commit
+- `p` to push
+- `: q` to exit git window
+
+# Slime
+
+- Visual mode to select
+- Blocks denoted by `# %%`
+- `<Space> r r` to send to REPL
