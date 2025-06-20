@@ -5,18 +5,19 @@ Using the [LazyVim](https://github.com/LazyVim/LazyVim) starter template. See th
 # Steps to set up
 
 1. Install tmux
-2. Install neovim and LazyVim
-3. Create hotkey for opening tmux `gnome-terminal  --full-screen --working-directory=Documents -- tmux`
-4. Use hotkey
-5. `Ctrl-X %` to split
-6. `Ctrl-X-<Right>` and `Ctrl-X-<Left>` to shrink and grow second panel
-7. Set `cd` in both panels
-8. Open R / Julia in the right
+2. Get nerd fonts (just icons) https://github.com/ryanoasis/nerd-fonts/releases/
+3. Install neovim and LazyVim
+4. Create hotkey for opening tmux `gnome-terminal  --full-screen --working-directory=Documents -- tmux`
+5. Use hotkey
+6. `Ctrl-X %` to split
+7. `Ctrl-X-<Right>` and `Ctrl-X-<Left>` to shrink and grow second panel
+8. Set `cd` in both panels
+9. Open R / Julia in the right
 
 - `julia --project=.` to avoid needing to do `] activate .`
 
-9. Open neovim to the left
-10. Send lines to REPL
+10. Open neovim to the left
+11. Send lines to REPL
 
 # Plugins
 
