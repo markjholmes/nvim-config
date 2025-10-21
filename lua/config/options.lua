@@ -74,6 +74,8 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+vim.o.formatexpr = "v:lua.require('conform').formatexpr()"
+
 -- columnn marker
 vim.o.colorcolumn = "92"
 vim.o.wrap = true
