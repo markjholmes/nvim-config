@@ -89,5 +89,7 @@ All of these need to be installed first.
 
 ### Other software
 
-treesitter
+- treesitter
+- tmux
+- fish
 
