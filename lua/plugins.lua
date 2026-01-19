@@ -106,7 +106,7 @@ require("lazy").setup({
             -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
             --
             -- See the fuzzy documentation for more information
-            fuzzy = { implementation = "prefer_rust_with_warning" }
+            fuzzy = { implementation = "prefer_rust" }
         },
 
         opts_extend = { "sources.default" }
@@ -114,7 +114,16 @@ require("lazy").setup({
 
     -- BUFFERS (TABS)
     {
-        "akinsho/bufferline.nvim", -- TODO: hidfe buffer when there's only one
+        "akinsho/bufferline.nvim", -- TODO: hide buffer when there's only one
+        options = {
+            -- NOTE: this will be called a lot so don't do any heavy processing here
+            custom_filter = function(buf_number, buf_numbers)
+                -- filter out by it's index number in list (don't show first buffer)
+                if buf_numbers[1] ~= buf_number then
+                    return true
+                end
+            end,
+        },
     },
 
     -- STATUS LINE
