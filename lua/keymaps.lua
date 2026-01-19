@@ -1,12 +1,10 @@
 -- define common options
 local opts = {
-    noremap = true,      -- non-recursive
-    silent = true,       -- do not show message
+    noremap = true, -- non-recursive
+    silent = true, -- do not show message
 }
 
------------------
--- Normal mode --
------------------
+-- Normal mode ----------------------------------------------------------------
 
 -- Hint: see `:h vim.map.set()`
 -- Better window navigation
@@ -22,10 +20,13 @@ vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
------------------
--- Visual mode --
------------------
+-- allow capital w to be w because I make that typo a lot
+-- this uses a different function since this is an Ex command
+vim.api.nvim_create_user_command('W', 'w', {})
+vim.api.nvim_create_user_command('Q', 'q', {})
 
--- Hint: start visual mode with the same area as the previous area and the same mode
+-- Visual mode ----------------------------------------------------------------
+
+-- Hint: start visual mode with same area as previous area and the same mode
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)

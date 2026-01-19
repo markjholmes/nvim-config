@@ -61,7 +61,6 @@ require("lazy").setup({
     -- AUTOCOMPLETE
     {
         "saghen/blink.cmp",
-
         -- use a release tag to download pre-built binaries
         version = '1.*',
         ---@module 'blink.cmp'
@@ -80,16 +79,13 @@ require("lazy").setup({
             --
             -- See :h blink-cmp-config-keymap for defining your own keymap
             keymap = { preset = 'default' },
-
             appearance = {
                 -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
                 -- Adjusts spacing to ensure icons are aligned
                 nerd_font_variant = 'mono'
             },
-
             -- (Default) Only show the documentation popup when manually triggered
             completion = { documentation = { auto_show = false } },
-
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
@@ -98,7 +94,6 @@ require("lazy").setup({
            -- See the fuzzy documentation for more information
             fuzzy = { implementation = "prefer_rust" }
         },
-
         opts_extend = { "sources.default" }
     },
 
@@ -179,7 +174,6 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",         -- required
             "sindrets/diffview.nvim",        -- optional - Diff integration
-
             -- Only one of these is needed.
             "nvim-telescope/telescope.nvim", -- optional
         },
@@ -203,10 +197,8 @@ require("lazy").setup({
     {
         "stevearc/conform.nvim",
         opts = {
-   
             -- specify how the formatters work
             formatters = {
-            
                 -- markdown based stuff
                 ["markdownlint-cli2"] = {
                   command = "markdownlint-cli2",
@@ -215,31 +207,25 @@ require("lazy").setup({
                     ignore_stdout = false,
                     ignore_stderr = false, -- still show real errors
                 },
-                
                 -- julia
                 ["runic"] = {
                     command = "julia",
                     args = { "--project=@runic", "--startup-file=no", "-e", "using Runic; exit(Runic.main(ARGS))" },
                 },
-                
                 -- python
                 ["black"] = {
                     command = "black",
                 },
-                
                 -- r
                 ["air"] = {
                     command = "air",
                     args = { "format" },
                 },
-                
                 -- c
                 ["clang-format"] = {
                     command = "clang-format",
                 },
-
             },
-
             -- specify formatters per language
             formatters_by_ft = {
                 ["markdown"] = { "markdownlint-cli2" },
@@ -248,7 +234,6 @@ require("lazy").setup({
                 ["c"] = { "clang-format" },
                 ["cpp"] = { "clang-format" },
             },
-
             -- Notify on errors instead of just logging
             notify_on_error = true,
         },
@@ -321,9 +306,8 @@ require('nvim-treesitter').install({ 'r', 'julia', 'c', 'python' })
 -- SETUP
 
 -- todo comments
-require('todo-comments').setup()
 
--- cmp
+require('todo-comments').setup()
 
 -- buffers
 require("bufferline").setup()
@@ -340,7 +324,7 @@ require('conform').setup()
 -- lualine
 require('lualine').setup()
 
--- NOT NEEDED
+-- NOTE: NOT NEEDED
 -- require('julia-vim').setup()
 -- require("nvim-cmp").setup()
 -- require('vim-slime').setup()
