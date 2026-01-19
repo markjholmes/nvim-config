@@ -29,7 +29,7 @@ require("lazy").setup({
     -- LSP CONFIGURATION
     {
         "neovim/nvim-lspconfig",
-        -- TODO
+        -- TODO: make this work
     },
 
     -- FILE VIEWER
@@ -54,7 +54,7 @@ require("lazy").setup({
             scroll = { enabled = false }, --
             statuscolumn = { enabled = true }, --
             words = { enabled = true }, --
-            zen = {enabled = true }, --
+            zen = { enabled = true }, --
         },
     },
 
@@ -64,11 +64,6 @@ require("lazy").setup({
 
         -- use a release tag to download pre-built binaries
         version = '1.*',
-        -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-        -- build = 'cargo build --release',
-        -- If you use nix, you can build from source using latest nightly rust with:
-        -- build = 'nix run .#build-plugin',
-
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
         opts = {
@@ -100,12 +95,7 @@ require("lazy").setup({
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
             },
-
-            -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-            -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
-            -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
-            --
-            -- See the fuzzy documentation for more information
+           -- See the fuzzy documentation for more information
             fuzzy = { implementation = "prefer_rust" }
         },
 
@@ -148,7 +138,26 @@ require("lazy").setup({
 
     -- HIGHLIGHTING CERTAIN COMMENTS
     {
-        "folke/todo-comments.nvim", -- TODO: get this working?
+        "folke/todo-comments.nvim", 
+        dependencies = { "nvim-lua/plenary.nvim" },
+          -- keywords recognized as todo comments
+        keywords = {
+            FIX = {
+                icon = " ", -- icon used for the sign, and in search results
+                color = "error", -- can be a hex color, or a named color (see below)
+                alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+            },
+            TODO = { icon = " ", color = "info" },
+            HACK = { icon = " ", color = "warning" },
+            WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+            PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+            NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+            TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+        },
+        gui_style = {
+            fg = "NONE", -- The gui style to use for the fg highlight group.
+            bg = "BOLD", -- The gui style to use for the bg highlight group.
+        },
     },
 
     -- TREESITTER
@@ -185,7 +194,7 @@ require("lazy").setup({
         "nvim-mini/mini.icons",
     },
 
-    -- COMMENTS
+    -- QUICKLY COMMENT LINES
     {
         "numToStr/Comment.nvim",
     },
@@ -310,6 +319,9 @@ require("lazy").setup({
 require('nvim-treesitter').install({ 'r', 'julia', 'c', 'python' })
 
 -- SETUP
+
+-- todo comments
+require('todo-comments').setup()
 
 -- cmp
 
