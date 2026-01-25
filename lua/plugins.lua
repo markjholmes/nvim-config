@@ -79,9 +79,7 @@ require("lazy").setup({
             --
             -- See :h blink-cmp-config-keymap for defining your own keymap
             keymap = { 
-                preset = 'default',
-                -- show with a list of providers
-                ['<tab>'] = { 'select_and_accept' },
+                preset = 'super-tab',
   
             },
             appearance = {
