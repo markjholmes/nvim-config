@@ -39,22 +39,20 @@ require("lazy").setup({
       lazy = false,
       ---@type snacks.Config
       opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
             -- refer to the configuration section below
-            bigfile = { enabled = true }, --
+            bigfile = { enabled = true }, --prevents things like LSP and Treesitter attaching to big files
             dashboard = { enabled = true }, -- NeoVim dashboard on startup without file
-            explorer = { enabled = true }, --
+            explorer = { enabled = true }, --A file explorer for snacks
             indent = { enabled = true }, -- shows vertical indent lines
-            input = { enabled = true }, --
-            picker = { enabled = true }, --
-            notifier = { enabled = true }, --
-            quickfile = { enabled = true }, --
-            scope = { enabled = true }, --
-            scroll = { enabled = false }, --
+            input = { enabled = true }, --Better vim.ui.input
+            notifier = { enabled = true }, -- pop up notifications
+            picker = { enabled = true }, --Snacks now comes with a modern fuzzy-finder to navigate the Neovim universe.
+            quickfile = { enabled = true }, --When doing nvim somefile.txt, it will render the file as quickly as possible, before loading your plugins.
+            scope = { enabled = true }, --Scope detection based on treesitter or indent
+            scroll = { enabled = false }, -- Smooth scrolling for Neovim
             statuscolumn = { enabled = true }, --
-            words = { enabled = true }, --
-            zen = { enabled = true }, --
+            words = { enabled = true }, -- Auto-show LSP references and quickly navigate between them
+            zen = { enabled = true }, -- zen mode typing
         },
     },
 
@@ -129,7 +127,13 @@ require("lazy").setup({
                 lualine_c = {'diagnostics'},
                 lualine_x = {'filename', 'filetype'},
                 lualine_y = {''},
-                lualine_z = {'location'}
+                lualine_z = {
+                    {
+                        'datetime',
+                        -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
+                        style = "%H:%M",
+                    }
+                }
             },
         },
     },
@@ -240,7 +244,6 @@ require("lazy").setup({
             -- Notify on errors instead of just logging
             notify_on_error = true,
         },
-
         -- other options 
         default_format_opts = {
            -- Increase the timeout in case Runic needs to precompile

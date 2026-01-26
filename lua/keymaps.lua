@@ -7,14 +7,20 @@ local opts = {
 -- Normal mode ----------------------------------------------------------------
 
 -- Hint: see `:h vim.map.set()`
+
 -- Better window navigation
 vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
 vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
+-- split window to the right
+vim.keymap.set('n', '<C-S-Right>', ':vsplit<CR>', opt)
+vim.keymap.set('n', '<C-S-Down>', ':split<CR>', opt)
+
 -- Resize with arrows
--- delta: 2 lines
+-- delta: 2 line-w-Right
+-- TODO: get rid of these because i super dont care about them?
 vim.keymap.set('n', '<C-Up>', ':resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
