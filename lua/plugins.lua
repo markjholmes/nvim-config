@@ -101,18 +101,18 @@ require("lazy").setup({
     },
 
     -- BUFFERS (TABS)
-    {
-        "akinsho/bufferline.nvim", -- TODO: hide buffer when there's only one
-        options = {
-            -- NOTE: this will be called a lot so don't do any heavy processing here
-            custom_filter = function(buf_number, buf_numbers)
-                -- filter out by it's index number in list (don't show first buffer)
-                if buf_numbers[1] ~= buf_number then
-                    return true
-                end
-            end,
-        },
-    },
+    -- {
+    --     "akinsho/bufferline.nvim", -- TODO: hide buffer when there's only one
+    --     options = {
+    --         -- NOTE: this will be called a lot so don't do any heavy processing here
+    --         custom_filter = function(buf_number, buf_numbers)
+    --             -- filter out by it's index number in list (don't show first buffer)
+    --             if buf_numbers[1] ~= buf_number then
+    --                 return true
+    --             end
+    --         end,
+    --     },
+    -- },
 
     -- STATUS LINE
     {
@@ -127,7 +127,7 @@ require("lazy").setup({
                 lualine_a = {'mode'},
                 lualine_b = {'branch', 'diff'},
                 lualine_c = {'diagnostics'},
-                lualine_x = {'filename', 'fileformat', 'filetype'},
+                lualine_x = {'filename', 'filetype'},
                 lualine_y = {''},
                 lualine_z = {'location'}
             },
@@ -296,12 +296,12 @@ require("lazy").setup({
     {
       "JuliaEditorSupport/julia-vim",
     },
-
-    -- QUARTO SUPPORT
-    {
-        "quarto-dev/quarto-nvim",
-    },
-
+    --
+    -- -- QUARTO SUPPORT
+    -- {
+    --     "quarto-dev/quarto-nvim",
+    -- },
+    --
     {
         'altermo/ultimate-autopair.nvim',
         event={'InsertEnter','CmdlineEnter'},
@@ -322,7 +322,7 @@ require('nvim-treesitter').install({ 'r', 'julia', 'c', 'python' })
 require('todo-comments').setup()
 
 -- buffers
-require("bufferline").setup()
+-- require("bufferline").setup()
 
 -- telescope
 require('telescope').setup()
