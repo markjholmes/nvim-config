@@ -203,6 +203,7 @@ require("lazy").setup({
     -- FORMATTING
     {
         "stevearc/conform.nvim",
+        lazy = false,
         opts = {
             -- specify how the formatters work
             formatters = {
@@ -229,6 +230,11 @@ require("lazy").setup({
                     args = { "format" },
                 },
                 -- c
+                -- NOTE: set the ~/.clang-format file to be
+                -- BasedOnStyle: LLVM
+                -- IndentWidth: 4
+                -- TabWidth: 4
+                -- UseTab: Never
                 ["clang-format"] = {
                     command = "clang-format",
                 },
@@ -243,17 +249,19 @@ require("lazy").setup({
             },
             -- Notify on errors instead of just logging
             notify_on_error = true,
-        },
-        -- other options 
-        default_format_opts = {
-           -- Increase the timeout in case Runic needs to precompile
-            -- (e.g. after upgrading Julia and/or Runic).
-            timeout_ms = 10000,
-        },
-        format_on_save = {
-            -- I recommend these options. See :help conform.format for details.
-            lsp_format = "fallback",
-            timeout_ms = 500,
+        
+            -- other options 
+            default_format_opts = {
+                -- Increase the timeout in case Runic needs to precompile
+                -- (e.g. after upgrading Julia and/or Runic).
+                timeout_ms = 10000,
+            },
+            format_on_save = function(bufnr)
+                return {
+                    timeout_ms = 500,
+                    lsp_format = "fallback",
+                }
+            end,
         },
     },
     
@@ -332,9 +340,6 @@ require('telescope').setup()
 
 -- comments
 require('Comment').setup()
-
--- conform
-require('conform').setup()
 
 -- lualine
 require('lualine').setup()

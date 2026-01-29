@@ -26,7 +26,7 @@ vim.opt.ignorecase = true           -- ignore case in searches by default
 vim.opt.smartcase = true            -- but make it case sensitive if an uppercase is entered
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
+vim.o.scrolloff = 15
 vim.o.formatexpr = "v:lua.require('conform').formatexpr()"
 
 vim.cmd([[autocmd BufNewFile,BufRead *.h set filetype=c]])
@@ -43,12 +43,18 @@ vim.o.linebreak = true
 -- Save undo history
 vim.o.undofile = true
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
 -- Preview substitutions live, as you type!
 vim.o.inccommand = "split"
 
 -- width of line number column
 vim.o.nuw = 3
+
+-- Source - https://stackoverflow.com/a/74230727
+-- Posted by PR7
+-- Retrieved 2026-01-29, License - CC BY-SA 4.0
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+
