@@ -1,47 +1,96 @@
-# 💤 LazyVim
+# NeoVim setup
 
-Using the [LazyVim](https://github.com/LazyVim/LazyVim) starter template. See the [documentation](https://lazyvim.github.io/installation).
+## Introduction
 
-# Steps to set up
+Install NeoVim and ensure it's added to PATH.
 
-1. Install tmux
-2. Get nerd fonts (just icons) https://github.com/ryanoasis/nerd-fonts/releases/
-3. Install neovim and LazyVim
-4. Create hotkey for opening tmux `gnome-terminal  --full-screen --working-directory=Documents -- tmux`
-5. Use hotkey
-6. `Ctrl-X %` to split
-7. `Ctrl-X-<Right>` and `Ctrl-X-<Left>` to shrink and grow second panel
-8. Set `cd` in both panels
-9. Open R / Julia in the right
+## Pre-requisites
 
-- `julia --project=.` to avoid needing to do `] activate .`
+Because we're doing this without Mason and other automated software management, we need to set up all auxilliary things ourselves.
 
-10. Open neovim to the left
-11. Send lines to REPL
+### Languages
 
-# Plugins
+We assume we're working with 4 main languages:
 
-- julia-vim
-- lspconfig
-- matchit
-- neogit
+1. Julia
+2. R
+3. C
+4. Python
+
+All of these need to be installed first.
+
+#### Julia
+
+**Language**:
+
+```
+```
+
+**Formatter**:
+
+```
+```
+
+**LSP**:
+
+```
+```
+
+#### R
+
+**Language**:
+
+```
+```
+
+**Formatter**:
+
+```
+```
+
+**LSP**:
+
+```
+```
+
+#### C
+
+**Language**:
+
+```
+```
+
+**Formatter**:
+
+```
+```
+
+**LSP**:
+
+```
+```
+
+#### Python
+
+**Language**:
+
+```
+```
+
+**Formatter**:
+
+```
+```
+
+**LSP**:
+
+```
+```
+
+### Other software
+
 - treesitter
-- vim-slime
-- vim-tmux-navigator
+- tmux
+- fish
 
-Plus the defaults from LazyVim (???)
-
-# Git interface
-
-- `<Space> g g` opens the visual git window thing
-- From there, `a` adds all `<Enter>` adds individual files
-- Go down to staged files and press `c` to commit
-- Write message and then `<Ctrl-D` to **do** the commit
-- `p` to push
-- `: q` to exit git window
-
-# Slime
-
-- Visual mode to select
-- Blocks denoted by `# %%`
-- `<Space> r r` to send to REPL
+>>>>>>> no-lazyvim
