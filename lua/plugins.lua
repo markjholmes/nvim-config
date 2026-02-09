@@ -125,7 +125,8 @@ require("lazy").setup({
                 lualine_a = {'mode'},
                 lualine_b = {'filename', 'diff'},
                 lualine_c = {'diagnostics'},
-                lualine_x = {
+                lualine_x = {'filetype'},
+                lualine_y = {
                      {
                         'buffers', 
                         mode = 1, 
@@ -134,10 +135,10 @@ require("lazy").setup({
                             modified = '●', -- Text when the buffer is modified
                             alternate_file = '', -- Text to identify the alternate file
                             directory =  '',     -- Text when buffer is a directory
-                        }
+                        },
+                        max_length = vim.o.columns * 1 / 5, -- Maximum width of buffers component,
                     }
                 },
-                lualine_y = {'filetype'},
                 lualine_z = {
                     {
                         'datetime',
