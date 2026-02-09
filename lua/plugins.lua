@@ -123,10 +123,21 @@ require("lazy").setup({
             },
             sections = {
                 lualine_a = {'mode'},
-                lualine_b = {'branch', 'diff'},
+                lualine_b = {'filename', 'diff'},
                 lualine_c = {'diagnostics'},
-                lualine_x = {'filename', 'filetype'},
-                lualine_y = {''},
+                lualine_x = {
+                     {
+                        'buffers', 
+                        mode = 1, 
+                        use_mode_colors = true, 
+                        symbols = {
+                            modified = '●', -- Text when the buffer is modified
+                            alternate_file = '', -- Text to identify the alternate file
+                            directory =  '',     -- Text when buffer is a directory
+                        }
+                    }
+                },
+                lualine_y = {'filetype'},
                 lualine_z = {
                     {
                         'datetime',
@@ -268,26 +279,27 @@ require("lazy").setup({
     -- slime (REPL integration)
     {
         "jpalardy/vim-slime",
+        lazy = false,
         keys = {
             -- configure with prompts
-            {
-                "<leader>rc",
-                "<cmd>SlimeConfig<cr>",
-                desc = "Slime Config"
-            },
-            -- space enter in visual mode to send selection
-            {
-                "<leader><CR>",
-                ":<C-u>'<,'>SlimeSend<CR>",
-                mode = "v",
-                desc = "Slime Send Selection"
-            },
-            -- space enter to send line
-            {
-                "<leader><CR>",
-                "<Plug>SlimeParagraphSend<CR>}",
-                desc = "Slime Send Line"
-            },
+            -- {
+            --     "<leader>rc",
+            --     "<cmd>SlimeConfig<cr>",
+            --     desc = "Slime Config"
+            -- },
+            -- -- space enter in visual mode to send selection
+            -- {
+            --     "<leader><CR>",
+            --     ":<C-u>'<,'>SlimeSend<CR>",
+            --     mode = "v",
+            --     desc = "Slime Send Selection"
+            -- },
+            -- -- space enter to send line
+            -- {
+            --     "<leader><CR>",
+            --     "<Plug>SlimeParagraphSend<CR>}",
+            --     desc = "Slime Send Line"
+            -- },
         },
 
         config = function()
@@ -307,12 +319,17 @@ require("lazy").setup({
     {
       "JuliaEditorSupport/julia-vim",
     },
-    --
-    -- -- QUARTO SUPPORT
-    -- {
-    --     "quarto-dev/quarto-nvim",
-    -- },
-    --
+    
+    -- QUARTO SUPPORT
+    {
+        "quarto-dev/quarto-nvim",
+        dependencies = {
+            "jmbuhr/otter.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
+
+    -- AUTOPAIRING OF BRACKETS
     {
         'altermo/ultimate-autopair.nvim',
         event={'InsertEnter','CmdlineEnter'},
@@ -320,7 +337,12 @@ require("lazy").setup({
         opts={
             --Config goes here
         },
-    }
+    },
+
+    -- -- TMUX NAVIGATION
+    -- {
+    --     'christoomey/vim-tmux-navigator',
+    -- },
 })
 
 -- INSTALL
@@ -343,6 +365,8 @@ require('Comment').setup()
 
 -- lualine
 require('lualine').setup()
+
+require('quarto').setup()
 
 -- NOTE: NOT NEEDED
 -- require('julia-vim').setup()
