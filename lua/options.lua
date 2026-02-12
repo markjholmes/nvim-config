@@ -10,8 +10,8 @@ vim.opt.shiftwidth = 4              -- insert 4 spaces on a tab
 vim.opt.expandtab = true            -- tabs are spaces, mainly because of Python
 
 -- UI config
-vim.opt.number = true               -- show absolute number
-vim.opt.relativenumber = false       -- add numbers to each line on the left side
+vim.opt.number = true               -- add numbers to each line on the left side
+vim.opt.relativenumber = false      -- show absolute number
 vim.opt.cursorline = true           -- highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true           -- open new vertical split bottom
 vim.opt.splitright = true           -- open new horizontal splits right
@@ -32,7 +32,7 @@ vim.o.formatexpr = "v:lua.require('conform').formatexpr()"
 vim.cmd([[autocmd BufNewFile,BufRead *.h set filetype=c]])
 
 -- leader key
-vim.g.mapleader = ';'
+-- vim.g.mapleader = ';'
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -48,6 +48,12 @@ vim.o.inccommand = "split"
 
 -- width of line number column
 vim.o.nuw = 3
+
+-- rainbow brackets
+vim.g.rainbow_active = 1
+
+-- slime remember cursor position
+vim.g.slime_preserve_curpos = 0
 
 -- Source - https://stackoverflow.com/a/74230727
 -- Posted by PR7

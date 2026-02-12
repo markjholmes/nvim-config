@@ -125,7 +125,7 @@ require("lazy").setup({
                 lualine_a = {'mode'},
                 lualine_b = {'filename', 'diff'},
                 lualine_c = {'diagnostics'},
-                lualine_x = {'filetype'},
+                lualine_x = {'location'}, -- lualine_x = {'filetype'},
                 lualine_y = {
                      {
                         'buffers', 
@@ -188,6 +188,7 @@ require("lazy").setup({
     },
 
     -- GIT
+    -- TODO: get gitui-org/gitui working
     {
         "NeogitOrg/neogit",
         dependencies = {
@@ -322,11 +323,35 @@ require("lazy").setup({
     },
     
     -- QUARTO SUPPORT
+    -- {
+    --     "quarto-dev/quarto-nvim",
+    --     dependencies = {
+    --         "jmbuhr/otter.nvim",
+    --         "nvim-treesitter/nvim-treesitter",
+    --     },
+    -- },
+
+    -- nicer markdown
     {
-        "quarto-dev/quarto-nvim",
+        'MeanderingProgrammer/render-markdown.nvim',
         dependencies = {
-            "jmbuhr/otter.nvim",
-            "nvim-treesitter/nvim-treesitter",
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-mini/mini.nvim'
+        },            -- if you use the mini.nvim suite
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {
+            filetypes = {
+                'markdown',
+                'quarto',
+            },
+            completions = {
+                lsp = {
+                    enabled = true
+                },
+            },
         },
     },
 
@@ -340,6 +365,10 @@ require("lazy").setup({
         },
     },
 
+    -- COLOURED BRACKET PAIRS
+    {
+        'luochen1990/rainbow',
+    }
     -- -- TMUX NAVIGATION
     -- {
     --     'christoomey/vim-tmux-navigator',
@@ -367,9 +396,12 @@ require('Comment').setup()
 -- lualine
 require('lualine').setup()
 
-require('quarto').setup()
+-- require('quarto').setup()
+
+require('render-markdown').setup()
 
 -- NOTE: NOT NEEDED
 -- require('julia-vim').setup()
 -- require("nvim-cmp").setup()
 -- require('vim-slime').setup()
+-- require('rainbow').setup()
