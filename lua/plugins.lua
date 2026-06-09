@@ -136,7 +136,7 @@ require("lazy").setup({
                             alternate_file = '', -- Text to identify the alternate file
                             directory =  '',     -- Text when buffer is a directory
                         },
-                        max_length = vim.o.columns * 1 / 5, -- Maximum width of buffers component,
+                        max_length = vim.o.columns * 2 / 5, -- Maximum width of buffers component,
                     }
                 },
                 lualine_z = {
@@ -368,7 +368,34 @@ require("lazy").setup({
     -- COLOURED BRACKET PAIRS
     {
         'luochen1990/rainbow',
-    }
+    },
+
+    -- FLOATING TERMINAL
+    {
+        "nvzone/floaterm",
+        dependencies = "nvzone/volt",
+        opts =  {
+            border = false,
+            size = { h = 60, w = 70 },
+
+            -- to use, make this func(buf)
+            mappings = { sidebar = nil, term = nil},
+
+            -- Default sets of terminals you'd like to open
+            terminals = {
+                { name = "Terminal", cmd = "fish" },
+            },
+        },
+        cmd = "FloatermToggle",
+    },
+
+    -- TYPST PREVIEW
+    {
+      'chomosuke/typst-preview.nvim',
+      lazy = false, -- or ft = 'typst'
+      version = '1.*',
+      opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+    },
     -- -- TMUX NAVIGATION
     -- {
     --     'christoomey/vim-tmux-navigator',

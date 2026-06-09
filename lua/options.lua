@@ -32,7 +32,7 @@ vim.o.formatexpr = "v:lua.require('conform').formatexpr()"
 vim.cmd([[autocmd BufNewFile,BufRead *.h set filetype=c]])
 
 -- leader key
--- vim.g.mapleader = ';'
+vim.g.mapleader = '<CR>'
 
 -- Enable break indent
 vim.o.breakindent = true
