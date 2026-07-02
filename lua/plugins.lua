@@ -78,12 +78,12 @@ require("lazy").setup({
             -- See :h blink-cmp-config-keymap for defining your own keymap
             keymap = { 
                 preset = 'super-tab',
-  
             },
             appearance = {
                 -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
                 -- Adjusts spacing to ensure icons are aligned
-                nerd_font_variant = 'mono'
+                nerd_font_variant = 'mono',
+				use_nvim_cmp_as_default = true,
             },
             -- (Default) Only show the documentation popup when manually triggered
             completion = { documentation = { auto_show = false } },
@@ -177,8 +177,8 @@ require("lazy").setup({
     -- TREESITTER
     {
         "nvim-treesitter/nvim-treesitter",
-        lazy = false,
-        build = ":TSUpdate"
+        -- lazy = false,
+        build = false --":TSUpdate"
     },
 
     -- TELESCOPE
@@ -319,7 +319,7 @@ require("lazy").setup({
     
     -- JULIA LANGUAGE SUPPORT
     {
-      "JuliaEditorSupport/julia-vim",
+        "JuliaEditorSupport/julia-vim",
     },
     
     -- QUARTO SUPPORT
@@ -403,7 +403,8 @@ require("lazy").setup({
 })
 
 -- INSTALL
-require('nvim-treesitter').install({ 'r', 'julia', 'c', 'python' })
+-- NOTE: UNCOMMENT THIS THE FIRST TIME MAYBE?
+-- require('nvim-treesitter').install({ 'r', 'julia', 'c', 'python' })
 
 -- SETUP
 
